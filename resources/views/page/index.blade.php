@@ -1,14 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 
-    @foreach($pages as $page)
-        <div class="container">
+	@if(count($pages)>0)
+		@foreach($pages as $page)
+			<div class="row">
+                <div class="col-md-5">
+                    <!-- Display image (imgs later)  ?? !! --->
+                    @foreach($page->files as $file)
+                      <img src="/storage/images/{{$file->name}}" style="width:100%;" />
+                    @endforeach
+                </div>
 
-           <h2><a href="{{route('page.show', $page)}}"> {{ $page->title }} </a></h2>
+               <div class="col-md-7">
+			        <h2><a href="{{route('page.show', $page)}}"> {{ $page->title }} </a></h2>
+                   <p class="strong"> {{ $page->created_at }} </p>
+                   <p> {{Str::limit($page->content, 200)}} </p>
+               </div> 
+			</div><hr/>
+		@endforeach
+	@else
+		<p> No news yet. </p>
+	@endif
+        <div class="row justify-content-center my-4"> {{ $pages->links() }} </div>
 
-          <hr>
-        </div>
-    @endforeach
-
+</div>
 @endsection
