@@ -15,8 +15,8 @@
 
                <div class="col-md-7">
 			        <h2><a href="{{route('page.show', $page)}}"> {{ $page->title }} </a></h2>
-                   <p class="strong"> {{ $page->created_at }} </p>
-                   <p> {{Str::limit($page->content, 200)}} </p>
+                   <p style="color:grey;"> {{ $page->created_at->format('d-m-Y h:m:s') }} </p>
+                   <p> {!! Str::limit($page->content, 200) !!} </p>
                </div> 
 			</div><hr/>
 		@endforeach

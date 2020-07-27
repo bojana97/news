@@ -14,7 +14,9 @@ class PageController extends Controller
     }
 
     public function index() {
-        $pages = Page::orderBy('created_at','desc')->paginate(4);
+      //$pages = Page::orderBy('created_at','desc')->paginate(4);
+        $pages = Page::latest()->paginate(4);
+
         return view('page.index', ['pages'=>$pages]);
     }
 

@@ -3,10 +3,10 @@
 
 <div class="container">
    <h2> {{ $page->title }} </h2>
-   <p class="strong"> {{ $page->created_at }} by {{$page->user->username}} </p>
+   <p style="color:grey;"> {{ $page->created_at->format('d-m-Y  h:m:s') }} by {{$page->user->username}} </p>
 
     <!-- Check auth, access control-->
-    @if(!Auth::guest())
+    @auth
         @if(Auth()->user()->id == $page->user_id)
 
          <div class="row">
@@ -21,14 +21,14 @@
          </div>
 
         @endif
-    @endif
+    @endauth
 
         <!-- Display image (imgs later) ??? --->
         @foreach($page->files as $file)
-             <img class="my-3" src="/storage/images/{{$file->name}}"/>
+           <img style="width:80%;" class="my-3" src="/storage/images/{{$file->name}}" />
         @endforeach
 
-   <p class="py-4"> {{ $page->content }} </p> <hr>
+   <p class="py-4"> {!! $page->content !!} </p> <hr>
 
 
 

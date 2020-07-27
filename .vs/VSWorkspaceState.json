@@ -1,13 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
+    "\\app\\Http",
     "\\app\\Http\\Controllers",
+    "\\app\\Providers",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\page",
-    "\\routes"
+    "\\resources\\views\\layouts",
+    "\\resources\\views\\page"
   ],
-  "SelectedNode": "\\bootstrap",
+  "SelectedNode": "\\resources\\views\\page\\create.blade.php",
   "PreviewInSolutionExplorer": false
 }
