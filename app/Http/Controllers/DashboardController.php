@@ -8,16 +8,22 @@ use App\User;
 class DashboardController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
 
-    public function index(){
-        $user_id = Auth()->user()->id;
-        $user = User::find($user_id);
-        $userPages = $user->pages;
+    public function index()
+    {
 
-        return view('dashboard', ['userPages' => $userPages]);
+        $user_id = Auth()->user()->id;
+
+        $user = User::find($user_id);
+
+        $userPages = $user->pages()->orderBy('page.created_at', 'desc')->get();
+
+        return view('dashboard',  ['userPages' => $userPages]);
+
     }
 }

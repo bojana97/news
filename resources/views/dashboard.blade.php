@@ -2,9 +2,14 @@
 
 @section('content')
 <div class="container">
+    
+    <a href="/categories" class="btn btn-outline-primary">Categories</a>
+
+    <!-- Create new page link -->
+    <a class="btn btn-outline-success" href="/page/create"> New page </a>
 
     @if(count($userPages) > 0)
-    <table class="table table-hover table-bordered mt-5">
+    <table class="table table-hover table-bordered mt-4">
         <thead>
             <tr class="table-primary">
                 <th scope="col">#</th>
