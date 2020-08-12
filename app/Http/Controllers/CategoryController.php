@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
+
         $categories = Category::orderBy('category', 'asc')->get();
 
         return view('category.index', ['categories' => $categories]);
@@ -18,8 +20,9 @@ class CategoryController extends Controller
 
 
 
-    public function display(Category $category){
-        //return $category;
+    public function display(Category $category)
+    {
+
         $pages = $category->pages()->paginate(5);
 
         return view('page.index', ['pages' => $pages]);
@@ -29,7 +32,9 @@ class CategoryController extends Controller
 
 
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+
         $this->validate( $request, [
            'category' => 'required',
        ]);
@@ -60,11 +65,14 @@ class CategoryController extends Controller
     }
 
 
+
+
     public function destroy($id){
 
         $category = Category::find($id);
 
         $category->delete();
+
         return back()->with('success', 'Category removed successfuly.');
     }
 }

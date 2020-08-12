@@ -74,7 +74,8 @@ class PageController extends Controller
         //create new file
         $file = new File;
 
-        if($request->hasFile('name')){
+        if($request->hasFile('name'))
+        {
             $filenameWithExtension = $request->file('name')->getClientOriginalName();
             $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
             $extension = $request->file('name')->getClientOriginalExtension();
@@ -132,7 +133,7 @@ class PageController extends Controller
 
             $file = File::where('page_id', '=', $page->id)->first();
 
-            if($request->hasFile('name')){
+            if( $request->hasFile('name') ){
 
                 $filenameWithExtension = $request->file('name')->getClientOriginalName();
                 $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
@@ -161,20 +162,13 @@ class PageController extends Controller
             return redirect('page')->with('error', 'You have no permission for this action!');
         }
 
-
         $page->categories()->detach();
 
-        //Delete file model and file from storage (except default image)
+        // Delete file from storage (except default image)
         $file = File::where('page_id', $page->id)->first();
-        if ($file->name != 'defaultimg.jpg')  {
-            $file->delete();
-            Storage::delete('public/images/'. $file->name);
-        }else{
-            $file->delete();
-        }
+
+        if ($file->name != 'defaultimg.jpg') {  Storage::delete('public/images/'. $file->name);  }
             
-        $comments = Comment::where('page_id', $page->id);
-        if ($comments != null)  {   $comments->delete();  }
 
         $page->delete();
 

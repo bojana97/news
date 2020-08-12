@@ -30,7 +30,7 @@
                    </ul>
                  @endforeach
                @else
-                <p>No categories yet.</p>
+                <p class="py-2">No categories yet.</p>
                @endif
            </div>
         </div>
