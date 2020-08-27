@@ -166,7 +166,7 @@ class PageController extends Controller
 
         // Delete file from storage (except default image)
         $file = File::where('page_id', $page->id)->first();
-
+     
         if ($file->name != 'defaultimg.jpg') {  Storage::delete('public/images/'. $file->name);  }
             
 
@@ -174,6 +174,25 @@ class PageController extends Controller
 
         return redirect('dashboard')->with('success', 'Page removed successfuly.');
     }
+
+
+
+
+
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        $pages = Page::with('categories')->where('title', 'LIKE', '%'.$search.'%')
+                                         ->orderBy('created_at','desc')
+                                         ->paginate(4);
+
+        return view('page.index', ['pages' => $pages]);
+    }
+
+
+
+
 
 
 }

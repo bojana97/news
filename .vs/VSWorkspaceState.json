@@ -11,6 +11,6 @@
     "\\resources\\views\\page",
     "\\routes"
   ],
-  "SelectedNode": "\\resources\\views\\category\\index.blade.php",
+  "SelectedNode": "\\resources\\views\\layouts\\app.blade.php",
   "PreviewInSolutionExplorer": false
 }

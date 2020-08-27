@@ -6,7 +6,7 @@
 		        @foreach($pages as $page)
                     <div class="row">
 
-                        <!-- Image --->
+                        <!---- Image ---->
                         <div class="col-lg-5">
                             @foreach($page->files as $file)
                                   <img src="/storage/images/{{$file->name}}" style="width:100%; height:100%;" />
@@ -15,12 +15,12 @@
 
 
                         <div class="col-lg-7">
-                            <h2> <a href="{{route('page.show', $page)}}"> {{ $page->title }} </a> </h2>
+                            <h2 class="my-2"> <a href="{{route('page.show', $page)}}"> {{ $page->title }} </a> </h2>
                             <p class="page-date"> Posted on {{ $page->created_at->format('d F Y  h:m') }}  by {{$page->user->username}} </p>
 
                                 <!-- Categories -->
                                 @foreach($page->categories as $category)
-                                     <button  class="btn btn-outline-info page-category"> {{ucfirst($category->category).' '}} </button>
+                                     <a href="{{url('category', $category)}}" class="btn btn-outline-info page-category"> {{ucfirst($category->category).' '}} </a>
                                 @endforeach
 
                             <p> {!! Str::of($page->content)->limit(350) !!} </p>
@@ -29,7 +29,7 @@
                 <hr />
                 @endforeach
 	      @else
-             <p> No news yet. </p>
+             <p class="text-center"> No news yet. </p>
           @endif
 
     <div class="row justify-content-center my-4">   {{ $pages->links() }}   </div>
