@@ -30,11 +30,7 @@
                    </ul>
                  @endforeach
                @else
-<<<<<<< HEAD
                 <p>No categories yet.</p>
-=======
-                <p class="py-2">No categories yet.</p>
->>>>>>> b-branch
                @endif
            </div>
         </div>

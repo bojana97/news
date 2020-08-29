@@ -6,12 +6,8 @@ use Illuminate\Support\Facades\Route;
 //Pages
 Route::get('/', 'PageController@index');
 Route::resource('page', 'PageController');
-Route::get('search', 'PageController@search')->name('search');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b-branch
 //After register or login redirect to dasboard with only users pages
 Auth::routes();
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
