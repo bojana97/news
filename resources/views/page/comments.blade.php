@@ -12,7 +12,11 @@
     <p> No comments yet.</p>
 @endif
 
+<<<<<<< HEAD
+<div class="row justify-content-xl-around mb-5 pagination-sm">
+=======
 <div class="row justify-content-xl-around mb-3 pagination-sm">
+>>>>>>> b-branch
     {{ $comments->links() }}
 </div>
 

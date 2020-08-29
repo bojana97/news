@@ -7,6 +7,30 @@
 
     <!-- Check auth, access control-->
     @auth
+<<<<<<< HEAD
+        @if(Auth()->user()->id == $page->user_id)
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Edit and delete buttons -->
+            <a href="/page/{{$page->id}}/edit" class="btn btn-sm btn-primary"> Edit </a>
+            {!!Form::open(['action' => ['PageController@destroy', $page->id], 'method'=> 'POST', 'style'=>'display:inline;'])!!}
+                    {{ Form::hidden('_method', 'DELETE' )}}
+                    {{Form::submit ('Delete', ['class' => 'btn btn-sm btn-danger' ] )}}
+                  {!!Form::close()!!}
+        </div>
+    </div>
+
+    @endif
+    @endauth
+
+    <!-- Display image (imgs later) ??? --->
+    @foreach($page->files as $file)
+    <img style="width:80%;" class="my-3" src="/storage/images/{{$file->name}}" />
+    @endforeach
+
+    <p class="py-4"> {!! $page->content !!} </p>
+=======
       @if(Auth()->user()->id == $page->user_id)
         <div class="row">
             <div class="col-md-12">
@@ -27,6 +51,7 @@
     @endforeach
 
     <p class="pt-2"> {!! $page->content !!} </p>
+>>>>>>> b-branch
     <hr />
 
 
