@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" ></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.tiny.cloud/1/c1ecjlx0mumu5ukmcb462z9nczzkdya8ekqjizw8e8w6oy82/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
@@ -21,10 +21,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
-    @yield('js')
 
     <script>
         tinymce.init({
@@ -46,23 +42,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Category
-                            </a>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            <?php $categories = App\Category::has('pages')->get();  ?>
-                             @foreach($categories as $category)
-                                  <a class="dropdown-item" href="{{url('category', $category)}}">
-                                      {{ucfirst($category->category)}}
-                                  </a>
-                             @endforeach
-                            </div>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -80,17 +61,16 @@
                             @endif
                         @else
 
+                        <!-- Create new page link -->
+                            <li>
+                                 <a class="nav-link" href="/page/create"> New page </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                        Dashboard
-                                    </a>
-
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -109,13 +89,9 @@
         </nav>
 
         <main class="py-4">
-            
             @include('inc.messages')
             @yield('content')
         </main>
     </div>
-
- 
-
 </body>
 </html>

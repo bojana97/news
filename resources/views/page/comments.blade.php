@@ -1,4 +1,4 @@
-<?php $numberOfComments = (count($comments));            ?>
+<?php $numberOfComments = (count($comments)); ?>
 
 @if(count($comments) > 0)
 <p> {{$numberOfComments}} comments</p>
@@ -12,8 +12,3 @@
 @else
     <p> No comments yet.</p>
 @endif
-
-<div class="row justify-content-xl-around mb-5 pagination-sm">
-    {{ $comments->links() }}
-</div>
-

@@ -1,16 +1,5 @@
 @extends('layouts.app')
 
-@section('js')
-<script>
-    $(document).ready(function () {
-        $('#categories').select2({
-            tags: true
-        });
-    });
-</script>
-
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -23,11 +12,6 @@
                 <div class="form-group">
                     {{ Form::label('title', 'Title') }}
                     {{ Form::text('title', '', ['class' => 'form-control', 'placeholder' => '']) }}
-                </div>
-
-                <div class="form-group">
-                    {{Form::label('category', 'Categories')}}
-                    {{Form::select('category[]', $categories, old('category'), ['class' => 'form-control select2', 'multiple'=>'multiple', 'id'=>'categories' ])}}
                 </div>
 
                 <div class="form-group">
@@ -46,6 +30,3 @@
         </div>
     </div>
 @endsection
-
-
-

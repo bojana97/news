@@ -1,37 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container pages" style="overflow-wrap: break-word; word-wrap:break-word;">
-        @if(count($pages)>0)
-		        @foreach($pages as $page)
-                    <div class="row">
+<div class="container">
 
-                        <!-- Image --->
-                        <div class="col-md-5">
-                            @foreach($page->files as $file)
-                                  <img src="/storage/images/{{$file->name}}" style="width:100%;" />
-                            @endforeach
-                        </div>
+	@if(count($pages)>0)
+		@foreach($pages as $page)
+			<div class="row">
+                <div class="col-md-5">
+                    <!-- Display image (imgs later)  ?? !! --->
+                    @foreach($page->files as $file)
+                      <img src="/storage/images/{{$file->name}}" style="width:100%;" />
+                    @endforeach
+                </div>
 
+               <div class="col-md-7">
+			        <h2><a href="{{route('page.show', $page)}}"> {{ $page->title }} </a></h2>
+                   <p style="color:grey;"> {{ $page->created_at->format('d-m-Y h:m:s') }} </p>
+                   <p> {!! Str::limit($page->content, 200) !!} </p>
+               </div> 
+			</div><hr/>
+		@endforeach
+	@else
+		<p> No news yet. </p>
+	@endif
+        <div class="row justify-content-center my-4"> {{ $pages->links() }} </div>
 
-                        <div class="col-md-7">
-                            <h2> <a href="{{route('page.show', $page)}}"> {{ $page->title }} </a> </h2>
-                            <p class="page-date"> Posted on {{ $page->created_at->format('d F Y  h:m') }}  by {{$page->user->username}} </p>
-
-                                <!-- Categories -->
-                                @foreach($page->categories as $category)
-                                     <p class="page-category"> {{ucfirst($category->category).' '}} </p>
-                                @endforeach
-
-                            <p> {!! Str::of($page->content)->limit(350) !!} </p>
-                        </div>
-                    </div>
-                <hr />
-                @endforeach
-	      @else
-             <p> No news yet. </p>
-          @endif
-    <div class="row justify-content-center my-4">   {{ $pages->links() }}   </div>
 </div>
-
 @endsection

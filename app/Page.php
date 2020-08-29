@@ -23,8 +23,4 @@ class Page extends Model
         return $this->hasMany('App\File');
     }
 
-    public function categories() {
-        return $this->belongsToMany(Category::class, 'category_page', 'page_id', 'category_id');
-    }
-
 }
