@@ -74,7 +74,12 @@ class PageController extends Controller
         //create new file
         $file = new File;
 
+<<<<<<< HEAD
         if($request->hasFile('name')){
+=======
+        if($request->hasFile('name'))
+        {
+>>>>>>> b-branch
             $filenameWithExtension = $request->file('name')->getClientOriginalName();
             $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
             $extension = $request->file('name')->getClientOriginalExtension();
@@ -132,7 +137,11 @@ class PageController extends Controller
 
             $file = File::where('page_id', '=', $page->id)->first();
 
+<<<<<<< HEAD
             if($request->hasFile('name')){
+=======
+            if( $request->hasFile('name') ){
+>>>>>>> b-branch
 
                 $filenameWithExtension = $request->file('name')->getClientOriginalName();
                 $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
@@ -156,11 +165,30 @@ class PageController extends Controller
     public function destroy($id)
     {
         $page = Page::find($id);
+<<<<<<< HEAD
+=======
 
         if(Auth()->user()->id != $page->user_id){
             return redirect('page')->with('error', 'You have no permission for this action!');
         }
 
+        $page->categories()->detach();
+
+        // Delete file from storage (except default image)
+        $file = File::where('page_id', $page->id)->first();
+     
+        if ($file->name != 'defaultimg.jpg') {  Storage::delete('public/images/'. $file->name);  }
+            
+
+        $page->delete();
+
+        return redirect('dashboard')->with('success', 'Page removed successfuly.');
+    }
+
+>>>>>>> b-branch
+
+
+<<<<<<< HEAD
 
         $page->categories()->detach();
 
@@ -179,7 +207,24 @@ class PageController extends Controller
         $page->delete();
 
         return redirect('dashboard')->with('success', 'Page removed successfuly.');
+=======
+
+
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        $pages = Page::with('categories')->where('title', 'LIKE', '%'.$search.'%')
+                                         ->orderBy('created_at','desc')
+                                         ->paginate(4);
+
+        return view('page.index', ['pages' => $pages]);
+>>>>>>> b-branch
     }
+
+
+
+
 
 
 }
