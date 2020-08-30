@@ -4,13 +4,13 @@
     "\\app",
     "\\app\\Http",
     "\\app\\Http\\Controllers",
+    "\\database",
+    "\\database\\migrations",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\category",
-    "\\resources\\views\\layouts",
-    "\\resources\\views\\page",
-    "\\routes"
+    "\\resources\\views\\layouts"
   ],
-  "SelectedNode": "\\resources\\views\\layouts\\app.blade.php",
+  "SelectedNode": "\\app\\Http\\Controllers\\PageController.php",
   "PreviewInSolutionExplorer": false
 }

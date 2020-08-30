@@ -47,14 +47,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<<<<<<< HEAD
-                    <!-- Left Side Of Navbar -->
-                    
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Category
-=======
+
                 <!-- Left Side Of Navbar -->
                 <?php $categories = App\Category::has('pages')->get();  ?>
                   @if(!$categories->isEmpty())
@@ -62,17 +55,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Categories
->>>>>>> b-branch
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-<<<<<<< HEAD
-                            <?php $categories = App\Category::has('pages')->get();  ?>
-                             @foreach($categories as $category)
-=======
+
                             @foreach($categories as $category)
->>>>>>> b-branch
                                   <a class="dropdown-item" href="{{url('category', $category)}}">
                                       {{ucfirst($category->category)}}
                                   </a>
@@ -129,23 +117,12 @@
             </div>
         </nav>
 
-<<<<<<< HEAD
-        <main class="py-4">
-            
-            @include('inc.messages')
-            @yield('content')
-        </main>
-    </div>
 
- 
-
-=======
         <main class="py-4">       
            @include('inc.messages')
            @yield('content')
         </main>
     </div>
 
->>>>>>> b-branch
 </body>
 </html>
